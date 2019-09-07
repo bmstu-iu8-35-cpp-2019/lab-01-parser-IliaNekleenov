@@ -16,9 +16,11 @@ class Json {
 
  public:
   Json();
+
   explicit Json(const std::string& s);
 
   bool is_array() const;
+
   bool is_object() const;
 
   std::any& operator[](const std::string& key);
