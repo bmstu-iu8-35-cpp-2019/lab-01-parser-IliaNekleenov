@@ -338,5 +338,7 @@ Json Json::market(const std::string& path_to_file) {
     } else {
       throw std::invalid_argument("wrong format");
     }
+  } else {
+    throw std::invalid_argument("wrong format");
   }
 }

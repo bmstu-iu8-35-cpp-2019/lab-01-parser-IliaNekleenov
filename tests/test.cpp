@@ -28,14 +28,10 @@ TEST(JSON_FORMAT, init) {
   EXPECT_EQ(std::any_cast<std::string>(address["street"]), "Vozdvijenka");
   EXPECT_TRUE(address.is_object());
   EXPECT_FALSE(address.is_array());
-
-  std::string str_trade = "";
-  std::ifstream fin_1("..//Market.txt");
-  getline(fin_1, str_trade, '*');
 }
 
 TEST(JSON_FORMAT, trade) {
-  auto trade_obj = Json::market(str_trade);
+  auto trade_obj = Json::market("..//Market.txt");
   EXPECT_EQ(
       std::any_cast<std::string>(std::any_cast<Json>(trade_obj[0])["ticker"]),
       "Si-9.15");
