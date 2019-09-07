@@ -7,9 +7,10 @@
 TEST(JSON_FORMAT, init) {
   std::string json = "";
   std::ifstream fin("..//txt//Json.txt");
+  if (!fin) std::cout << "not found";
   getline(fin, json, '*');
   fin.close();
-
+  std::cout << json;
   Json object = Json::parse(json);
   EXPECT_EQ(std::any_cast<std::string>(object["lastname"]), "Ivanov");
   EXPECT_EQ(std::any_cast<bool>(object["islegal"]), false);
