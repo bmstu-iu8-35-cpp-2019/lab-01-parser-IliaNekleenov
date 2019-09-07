@@ -6,7 +6,8 @@
 
 TEST(JSON_FORMAT, init) {
   std::string json = "";
-  std::ifstream fin("..//txt//Json.txt");
+  std::string path = "..//txt//Json.txt";
+  std::ifstream fin(path);
   if (!fin) std::cout << "not found";
   getline(fin, json, '*');
   fin.close();
@@ -32,7 +33,8 @@ TEST(JSON_FORMAT, init) {
 }
 
 TEST(JSON_FORMAT, trade) {
-  auto trade_obj = Json::market("..//txt//Market.txt");
+  std::string path1 = "..//txt//Market.txt";
+  auto trade_obj = Json::market(path1);
   EXPECT_EQ(
       std::any_cast<std::string>(std::any_cast<Json>(trade_obj[0])["ticker"]),
       "Si-9.15");
