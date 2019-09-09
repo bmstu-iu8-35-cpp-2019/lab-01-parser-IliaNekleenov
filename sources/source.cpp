@@ -272,26 +272,16 @@ bool Json::is_object() const {
 
 std::any& Json::operator[](const std::string& key) {
   if (is_object()) {
-    auto obj = std::any_cast<std::unordered_map<std::string, std::any>>(data);
-    auto it = obj.begin();
-    while (it != obj.end()) {
-      if (it->first == key) {
-        return it->second;
-      }
-      it++;
-    }
-    throw std::invalid_argument("invalid key");
+    return std::any_cast<std::unordered_map<std::string, std::any>&>(data)[key];
   }
   throw std::invalid_argument("invalid key");
 }
 
 std::any& Json::operator[](int index) {
   if (is_array()) {
-    auto obj = std::any_cast<std::vector<std::any>>(data);
-    return obj[index];
-  } else {
-    throw std::invalid_argument("invalid key");
+    return std::any_cast<std::vector<std::any>&>(data)[index];
   }
+  throw std::invalid_argument("invalid key");
 }
 
 Json Json::parse(const std::string& s) { return Json(s); }
@@ -310,8 +300,8 @@ Json Json::parseFile(const std::string& path_to_file) {
   return Json(json);
 }
 
-Json Json::market(const std::string& path_to_file) {
-  Json first(Json::parseFile(path_to_file));
+Json Json::market(const std::string& s) {
+  Json first(s);
   if (first.is_array()) {
     auto vec = std::any_cast<std::vector<std::any>>(first.data);
     if (vec.size() != 3) {
