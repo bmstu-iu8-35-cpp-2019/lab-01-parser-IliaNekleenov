@@ -43,7 +43,7 @@ TEST(JSON_FORMAT, trade) {
             100027);
   EXPECT_EQ(std::any_cast<std::string>(
                 std::any_cast<Json>(trade_obj[2])["description"]),
-            "Futures contract for GAZPROM shares");
+            "Futures contract for Gazprom shares");
   EXPECT_FALSE(trade_obj.is_object());
   EXPECT_TRUE(trade_obj.is_array());
 }
