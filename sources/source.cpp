@@ -274,14 +274,14 @@ std::any& Json::operator[](const std::string& key) {
   if (is_object()) {
     return std::any_cast<std::unordered_map<std::string, std::any>&>(data)[key];
   }
-  throw std::invalid_argument("invalid key");
+  throw std::invalid_argument("not a Json-object");
 }
 
 std::any& Json::operator[](int index) {
   if (is_array()) {
     return std::any_cast<std::vector<std::any>&>(data)[index];
   }
-  throw std::invalid_argument("invalid key");
+  throw std::invalid_argument("not a Json-array");
 }
 
 Json Json::parse(const std::string& s) { return Json(s); }

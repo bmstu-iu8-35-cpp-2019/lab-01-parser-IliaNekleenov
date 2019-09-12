@@ -28,7 +28,7 @@ TEST(JSON_FORMAT, init) {
 
 TEST(JSON_FORMAT, trade) {
   std::string path = "..//txt//Market.json";
-  auto trade_obj = Json::parseFile(path);
+  auto trade_obj = Json::market(path);
   EXPECT_EQ(
       std::any_cast<std::string>(std::any_cast<Json>(trade_obj[0])["ticker"]),
       "Si-9.15");
