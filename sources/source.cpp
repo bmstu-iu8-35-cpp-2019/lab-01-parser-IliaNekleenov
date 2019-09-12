@@ -289,14 +289,13 @@ Json Json::parse(const std::string& s) { return Json(s); }
 Json Json::parseFile(const std::string& path_to_file) {
   std::ifstream fin(path_to_file);
   std::string json = "";
-  if (!fin) std::cout << "not found2";
+  if (!fin) std::cout << "file not found";
   while (fin) {
     std::string str;
     getline(fin, str);
-    json += str;
+    json += str + '\n';
   }
   fin.close();
-  std::cout << json;
   return Json(json);
 }
 

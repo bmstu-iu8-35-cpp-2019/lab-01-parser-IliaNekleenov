@@ -5,12 +5,8 @@
 #include <header.hpp>
 
 TEST(JSON_FORMAT, init) {
-  std::string json =
-      "{\n    \"lastname\" : \"Ivanov\",\n    \"firstname\" : \"Ivan\",\n    "
-      "\"age\" : 25,\n    \"islegal\" : false,\n    \"marks\" : [\n    "
-      "\t4,5,5,5,2,3\n    ],\n    \"address\" : {\n    \t\"city\" : "
-      "\"Moscow\",\n        \"street\" : \"Vozdvijenka\"\n    }\n}";
-  Json object = Json::parse(json);
+  std::string path = "..//txt//Json.json";
+  auto object = Json::parseFile(path);
   EXPECT_EQ(std::any_cast<std::string>(object["lastname"]), "Ivanov");
   EXPECT_EQ(std::any_cast<bool>(object["islegal"]), false);
   EXPECT_EQ(std::any_cast<int>(object["age"]), 25);
@@ -31,11 +27,8 @@ TEST(JSON_FORMAT, init) {
 }
 
 TEST(JSON_FORMAT, trade) {
-  std::string path1 =
-      "[\n    [\"Si-9.15\", \"RTS-9.15\", \"GAZP-9.15\"],\n    [100024, "
-      "100027, 100050],\n    [\"Futures contract for USD/RUB\", \"Futures "
-      "contract for index RTS\", \"Futures contract for Gazprom shares\"]\n]";
-  auto trade_obj = Json::market(path1);
+  std::string path = "..//txt//Market.json";
+  auto trade_obj = Json::parseFile(path);
   EXPECT_EQ(
       std::any_cast<std::string>(std::any_cast<Json>(trade_obj[0])["ticker"]),
       "Si-9.15");
