@@ -1,5 +1,13 @@
-[
-    ["Si-9.15", "RTS-9.15", "GAZP-9.15"],
-    [100024, 100027, 100050],
-    ["Futures contract for USD/RUB", "Futures contract for index RTS", "Futures contract for Gazprom shares"]
-]
+{
+    "lastname" : "Ivanov",
+    "firstname" : "Ivan",
+    "age" : 25,
+    "islegal" : false,
+    "marks" : [
+    	4,5,5,5,2,3
+    ],
+  "address": {
+    "city": "Moscow",
+    "street": "Vozdvijenka"
+  }
+}

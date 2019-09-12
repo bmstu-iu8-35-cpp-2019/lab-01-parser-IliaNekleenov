@@ -299,8 +299,8 @@ Json Json::parseFile(const std::string& path_to_file) {
   return Json(json);
 }
 
-Json Json::market(const std::string& s) {
-  Json first(s);
+Json Json::market(const std::string& path_to_file) {
+  Json first = Json::parseFile(path_to_file);
   if (first.is_array()) {
     auto vec = std::any_cast<std::vector<std::any>>(first.data);
     if (vec.size() != 3) {

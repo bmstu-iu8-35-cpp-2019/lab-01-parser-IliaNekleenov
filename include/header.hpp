@@ -31,7 +31,7 @@ class Json {
 
   static Json parseFile(const std::string& path_to_file);
 
-  static Json market(const std::string& s);
+  static Json market(const std::string& path_to_file);
 };
 
 #endif  // INCLUDE_HEADER_HPP_
