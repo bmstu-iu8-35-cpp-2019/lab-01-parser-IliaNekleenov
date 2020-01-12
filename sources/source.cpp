@@ -124,8 +124,8 @@ std::unordered_map<std::string, std::any> Json::parse_object(
       if (minus) {
         num = -num;
       }
-      if (double(int(num)) - num == 0.) {
-        value = int(num);
+      if (static_cast<double>(static_cast<int>(num)) - num == 0.) {
+        value = static_cast<int>(num);
       } else {
         value = num;
       }
@@ -158,7 +158,6 @@ std::vector<std::any> Json::parse_array(const std::string& s) {
     std::any item;
     if (s[i] == '"') {
       item = parse_string(s, i);
-      ;
     } else if (s[i] == '{') {
       size_t count = find_closing(s, i, '{', '}');
       item = Json(s.substr(i, count));
@@ -178,7 +177,7 @@ std::vector<std::any> Json::parse_array(const std::string& s) {
       if (minus) {
         num = -num;
       }
-      if (double(int(num)) - num == 0.) {
+      if (static_cast<double>(static_cast<int>(num)) - num == 0.) {
         item = int(num);
       } else {
         item = num;
