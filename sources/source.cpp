@@ -178,7 +178,7 @@ std::vector<std::any> Json::parse_array(const std::string& s) {
         num = -num;
       }
       if (static_cast<double>(static_cast<int>(num)) - num == 0.) {
-        item = int(num);
+        item = static_cast<int>(num);
       } else {
         item = num;
       }
